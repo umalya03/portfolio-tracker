@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.List;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -32,7 +33,7 @@ public class PortfolioController {
 
     @PostMapping("/transactions")
     @ResponseStatus(HttpStatus.CREATED)
-    public Transaction addTransaction(@RequestBody TransactionRequest request) {
+    public Transaction addTransaction(@Valid @RequestBody TransactionRequest request) {
         LocalDate date = request.date() != null ? request.date() : LocalDate.now();
         return portfolioService.recordTransaction(
                 request.symbol(), request.type(), request.quantity(), request.price(), date);
@@ -44,7 +45,7 @@ public class PortfolioController {
     }
 
     @PutMapping("/prices/{symbol}")
-    public StockPrice setPrice(@PathVariable String symbol, @RequestBody PriceRequest request) {
+    public StockPrice setPrice(@PathVariable String symbol, @Valid @RequestBody PriceRequest request) {
         return portfolioService.setPrice(symbol, request.price());
     }
 
