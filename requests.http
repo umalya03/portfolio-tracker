@@ -1,0 +1,52 @@
+### 1. Buy 10 AAPL at 150
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "symbol": "AAPL",
+  "type": "BUY",
+  "quantity": 10,
+  "price": 150,
+  "date": "2026-11-01"
+}
+
+### 2. Buy 10 AAPL at 170
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "symbol": "AAPL",
+  "type": "BUY",
+  "quantity": 10,
+  "price": 170,
+  "date": "2026-11-05"
+}
+
+### 3. Sell 5 AAPL at 175
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "symbol": "AAPL",
+  "type": "SELL",
+  "quantity": 5,
+  "price": 175,
+  "date": "2026-11-10"
+}
+
+### 4. Set current price
+PUT http://localhost:8080/api/prices/AAPL
+Content-Type: application/json
+
+{
+  "price": 180
+}
+
+### 5. See holdings
+GET http://localhost:8080/api/holdings
+
+### 6. See summary
+GET http://localhost:8080/api/portfolio/summary
+
+### 7. All transactions
+GET http://localhost:8080/api/transactions
